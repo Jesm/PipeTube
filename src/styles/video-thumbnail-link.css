@@ -1,0 +1,22 @@
+.video-thumbnail-link {
+    display: block;
+    box-sizing: border-box;
+    width: 260px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.video-thumbnail-link:hover {
+    background-color: #333;
+}
+
+.video-thumbnail-link .thumbnail {
+    max-width: 100%;
+}
+
+.video-thumbnail-link .title {
+    display: block;
+    height: 2.4rem;
+    line-height: 1.2rem;
+    color: #fff;
+}

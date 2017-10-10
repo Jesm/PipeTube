@@ -1,0 +1,30 @@
+.search-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    transition: width .4s, height .4s, border-bottom-right-radius .4s;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.search-layer.hide {
+    width: 4rem;
+    height: 4rem;
+    overflow: hidden;
+    border-bottom-right-radius: 100px;
+}
+.search-layer .inner-row {
+    display: flex;
+    height: 4rem;
+}
+
+.search-layer .inner-row > div {
+    flex: 11;
+}
+
+.search-layer .inner-row > .minor {
+    flex: 1;
+    min-width: 4rem;
+}

@@ -1,0 +1,15 @@
+.video-list {
+    flex: 11;
+    padding: 0 10px 50px 0;
+    list-style: none;
+}
+
+.video-list.loading {
+    opacity: .7;
+}
+
+.video-list li {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    width: 260px;
+}
