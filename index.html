@@ -15,9 +15,9 @@
     <div id="root"></div>
     <script src="dist/bundle.js"></script>
     <script>
-        (function(root){
-            PipeTube.init(root);
-        })(document.getElementById('root'));
+        (function(root, key){
+            PipeTube.init(key, root, window);
+        })(document.getElementById('root'), 'AIzaSyBhLiiSqDwMO03-e-c9JCVR-2xoYkT65cE');
     </script>
 </body>
 </html>

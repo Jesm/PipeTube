@@ -11,12 +11,18 @@
 }
 
 .video-thumbnail-link .thumbnail {
+    display: block;
     max-width: 100%;
+    min-height: 135px;
+    background-color: #aaa;
 }
 
 .video-thumbnail-link .title {
     display: block;
+    margin-top: .3rem;
     height: 2.4rem;
+    font-size: .95rem;
     line-height: 1.2rem;
+    overflow: hidden;
     color: #fff;
 }

@@ -5,7 +5,7 @@ import '../styles/video-list.css';
 const VideoList = props => (
     <ul className={`video-list ${ props.fetchingVideos ? 'loading' : '' }`}>
         {props.videos.map(video =>
-            <li key={video.id}>
+            <li key={video.id.videoId}>
                 <VideoThumbnailLink video={video} onClick={() => props.onVideoClick(video)} />
             </li>
         )}

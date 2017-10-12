@@ -1,6 +1,15 @@
+export const SET_YOUTUBE_API_KEY = 'set_youtube_api_key';
 export const SET_SEARCH_VIDEOS = 'set_search_videos';
 export const SET_CURRENT_VIDEO = 'set_current_video';
 export const SET_FETCHING_VIDEOS = 'set_fetching_videos';
+export const ENABLE_YOUTUBE_IFRAME_API = 'enable_youtube_iframe_api';
+
+export const setYoutubeApiKey = key => {
+    return {
+        type: SET_YOUTUBE_API_KEY,
+        key
+    };
+};
 
 export const setFetchingSearch = () => {
     return {
@@ -23,22 +32,53 @@ export const setCurrentVideo = video => {
     };
 };
 
-const mockVideos = term => {
-    const arr = [];
-    for(let x = 15; x--;){
-        arr.push({
-            id: x,
-            thumbnail: 'http://placehold.it/240x138',
-            title: `${term} video ${x}`
-        });
-    }
+const buildQueryString = obj => (
+    Object.keys(obj)
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
+        .join('&')
+);
 
-    return arr;
+const youtubeApi = (method, params) => {
+    const base = `https://www.googleapis.com/youtube/v3/${method}`;
+    const queryString = buildQueryString(params);
+    const url = `${base}?${queryString}`;
+
+    return fetch(url);
 };
 
+const isVideo = item => item.id.kind == 'youtube#video';
+
 export const fetchSearchVideos = term => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         dispatch(setFetchingSearch());
-        setTimeout(() => dispatch(setSearchVideos(mockVideos(term), true)), 400);
+
+        const params = {
+            key: getState().youtubeApiKey,
+            q: term,
+            type: 'video',
+            part: 'snippet',
+            fields: 'items(id,snippet(title,thumbnails))',
+            maxResults: 15
+        };
+
+        return youtubeApi('search', params)
+            .then(response => response.json())
+            .then(json => dispatch(setSearchVideos(json.items.filter(isVideo), !!json.error)));
+    };
+};
+
+export const loadYoutubeIframeAPI = window => {
+    return dispatch => {
+        window.onYouTubeIframeAPIReady = () => dispatch(enableYoutubeIframeAPI());
+
+        const element = window.document.createElement('script');
+        element.src = 'https://www.youtube.com/iframe_api';
+        window.document.body.appendChild(element);
+    };
+};
+
+export const enableYoutubeIframeAPI = () => {
+    return {
+        type: ENABLE_YOUTUBE_IFRAME_API
     };
 };

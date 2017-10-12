@@ -1,4 +1,5 @@
 .toggle-button {
+    position: fixed;
     padding: 0;
     border: none;
     width: 3rem;

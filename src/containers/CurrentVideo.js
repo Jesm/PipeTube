@@ -4,7 +4,8 @@ import VideoLayer from '../components/VideoLayer.jsx';
 
 const mapStateToProps = state => {
     return {
-        video: state.currentVideo
+        video: state.currentVideo,
+        youtubeIframeAPIStatus: state.youtubeIframeAPIStatus
     };
 }
 
