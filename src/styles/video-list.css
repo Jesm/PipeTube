@@ -1,5 +1,4 @@
 .video-list {
-    flex: 11;
     padding: 0 10px 50px 0;
     list-style: none;
     transition: opacity .4s;

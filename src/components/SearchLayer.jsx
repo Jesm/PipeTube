@@ -46,13 +46,15 @@ class SearchLayer extends React.Component{
                     <div className='minor'>
                         <ToggleButton mode={mode} onClick={this.handleSearchToggle} />
                     </div>
-                    <div>
+                    <div className='major'>
                         <SearchTextInput onChange={this.handleSearchTextChange} />
                     </div>
                 </div>
                 <div className='inner-row'>
                     <div className='minor'></div>
-                    <VideoList videos={this.props.videos} fetchingVideos={this.props.fetchingVideos} onVideoClick={this.handleVideoClick} />
+                    <div className='major'>
+                        <VideoList videos={this.props.videos} fetchingVideos={this.props.fetchingVideos} onVideoClick={this.handleVideoClick} />
+                    </div>
                 </div>
             </section>
         );

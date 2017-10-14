@@ -20,7 +20,7 @@
     height: 4rem;
 }
 
-.search-layer .inner-row > div {
+.search-layer .inner-row > .major {
     flex: 11;
 }
 
