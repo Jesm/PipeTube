@@ -93,6 +93,7 @@ describe('async actions', () => {
         });
     });
 
+    // TODO must mock the window object to not fetch the youtune iframe api script
     test('creates ENABLE_YOUTUBE_IFRAME_API when finishes loading the youtube iframe api', () => {
         const expectedActions = [
             { type: actions.ENABLE_YOUTUBE_IFRAME_API }
