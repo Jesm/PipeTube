@@ -5,7 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge(common, {
     output: {
-        filename: 'min.bundle.js'
+        filename: 'bundle.min.js'
     },
     plugins: [
         new UglifyJSPlugin(),
